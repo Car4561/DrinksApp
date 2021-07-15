@@ -1,16 +1,15 @@
 package com.carlos.tragosapp.data
 
-import com.carlos.tragosapp.data.model.Drink
+import com.carlos.tragosapp.domain.models.Drink
 import com.carlos.tragosapp.vo.Resource
 import com.carlos.tragosapp.vo.RetrofitClient
 
 
 class DataSource {
 
-    suspend fun getDrinksByName(): Resource.Sucess<List<Drink>> {
-        return Resource.Sucess(RetrofitClient.webservice.getDrinksByName("margarita").drinkList)
+    suspend fun getDrinksByName(drinkName: String): Resource.Sucess<List<Drink>> {
+        return Resource.Sucess(RetrofitClient.webservice.getDrinksByName(drinkName).drinkList ?: emptyList())
     }
-
 
     private val genereteDrinkList = Resource.Sucess(
         listOf(

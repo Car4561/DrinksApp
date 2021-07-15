@@ -1,16 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ui.DetailsDrinkFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/img_drink"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_save_drink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_save"
+            app:tint="@color/white"
+            />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_delete_drink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/white"
+            />
+    </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_drink_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:text="Margarita Blue"/>
+
+    <TextView
+        android:id="@+id/tv_has_alcohol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        tools:text="Tragos sin alcohol"/>
+    
+    <TextView
+        android:id="@+id/tv_drink_desc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="FRAGMENT DETALLES TRAGOS"
-        android:textSize="25sp"
-        android:gravity="center"/>
-</FrameLayout>
+        android:layout_marginTop="8dp" />
+
+    
+
+</LinearLayout>

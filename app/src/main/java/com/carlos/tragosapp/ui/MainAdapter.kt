@@ -4,19 +4,19 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.carlos.tragosapp.R
-import com.carlos.tragosapp.data.model.Drink
+import com.carlos.tragosapp.domain.models.Drink
 import com.carlos.tragosapp.databinding.ItemDrinkBinding
 import com.carlos.tragosapp.ui.base.BaseViewHolder
 
 class MainAdapter(
     private val context: Context,
-    private val drinksList: List<Drink>,
     private val itemClickListener: OnDrinkClickListener
-) :
-    RecyclerView.Adapter<BaseViewHolder<Drink>>() {
+) : ListAdapter<Drink,BaseViewHolder<Drink>>(DiffCallback()) {
 
     interface OnDrinkClickListener {
         fun onDrinkClick(drink: Drink)
@@ -30,11 +30,9 @@ class MainAdapter(
 
     override fun onBindViewHolder(holder: BaseViewHolder<Drink>, position: Int) {
         when (holder) {
-            is MainViewHolder -> holder.bind(drinksList[position])
+            is MainViewHolder -> holder.bind(getItem(position))
         }
     }
-
-    override fun getItemCount(): Int = drinksList.size
 
     inner class MainViewHolder(itemView: View) : BaseViewHolder<Drink>(itemView) {
 
@@ -52,5 +50,15 @@ class MainAdapter(
             }
         }
 
+    }
+}
+
+class DiffCallback : DiffUtil.ItemCallback<Drink>() {
+    override fun areItemsTheSame(oldItem: Drink, newItem: Drink): Boolean {
+        return oldItem.drinkId == newItem.drinkId
+    }
+
+    override fun areContentsTheSame(oldItem: Drink, newItem: Drink): Boolean {
+        return oldItem == newItem
     }
 }

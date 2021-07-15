@@ -1,9 +1,12 @@
 package com.carlos.tragosapp.domain
 
-import com.carlos.tragosapp.data.model.Drink
-import com.carlos.tragosapp.vo.Resource
+import com.carlos.tragosapp.domain.models.Drink
+import com.carlos.tragosapp.domain.models.DrinkEntity
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
-    fun getDrinkList(): Flow<Resource<List<Drink>>>
+    fun getDrinksList(drinkName : String): Flow<List<Drink>>
+    fun getDrinksFavorites(): Flow<List<Drink>>
+    suspend fun insertDrink(drink: Drink)
+    suspend fun deleteDrink(drink: Drink)
 }

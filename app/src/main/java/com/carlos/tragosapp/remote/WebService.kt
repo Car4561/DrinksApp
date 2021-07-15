@@ -1,7 +1,6 @@
 package com.carlos.tragosapp.remote
 
-import com.carlos.tragosapp.data.model.Drink
-import com.carlos.tragosapp.data.model.DrinkList
+import com.carlos.tragosapp.remote.models.DrinkResponseModel
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,10 +8,7 @@ import retrofit2.http.Query
 interface WebService  {
 
     @GET("search.php")
-    suspend fun getDrinksByName(@Query("s") drinkName: String) : DrinkList
-
-
-
+    suspend fun getDrinksByName(@Query(value = "s") drinkName: String) : DrinkResponseModel
 
 
 }

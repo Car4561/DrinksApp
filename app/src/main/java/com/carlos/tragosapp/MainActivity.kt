@@ -2,17 +2,10 @@ package com.carlos.tragosapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.carlos.tragosapp.data.DataSource
 import com.carlos.tragosapp.databinding.ActivityMainBinding
-import com.carlos.tragosapp.databinding.FragmentMainBinding
-import com.carlos.tragosapp.domain.RepoImpl
-import com.carlos.tragosapp.ui.viewmodel.MainViewModel
-import com.carlos.tragosapp.ui.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 

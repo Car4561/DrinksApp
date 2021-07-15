@@ -2,6 +2,8 @@ package com.carlos.tragosapp.vo
 
 import com.carlos.tragosapp.remote.WebService
 import com.google.gson.GsonBuilder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.GlobalScope
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,4 +25,6 @@ object RetrofitClient {
 
     private val client : OkHttpClient
         get() = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)).build()
+
+    lateinit var scope :CoroutineScope
 }
